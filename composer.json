@@ -1,0 +1,18 @@
+{
+    "name": "avatarphp/glide-csrf",
+    "type": "library",
+    "description": "A Minimal CSRF(Cross Site Request Forgery) Protection Packages",
+    "homepage": "https://github.com/AvatarPHP/glide-csrf",
+    "license":  "MIT",
+    "autoload": {
+        "psr-4": {
+            "AvatarPHP\\Glide\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AvatarPHP\\Test\\": "tests/"
+        }
+    },
+    "bin": ["bin/"]
+}
