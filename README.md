@@ -32,7 +32,7 @@
     <a href="http://www.glide.m-sarfaraz.com/">
       Website
     </a>
-    <span> | </span>
+    <span> | </span> 
     <a href="https://github.com/AvatarPHP/Glide-CSRF/tree/master/docs/DOCUMENTATION.md">
       Docs
     </a>
