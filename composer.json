@@ -6,7 +6,7 @@
     "license":  "MIT",
     "autoload": {
         "psr-4": {
-            "AvatarPHP\\Glide\\": "src/"
+            "AvatarPHP\\": "src/"
         }
     },
     "autoload-dev": {

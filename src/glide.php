@@ -9,10 +9,19 @@
  * file that was distributed with this source code.
  * 
  */
+
 namespace AvatarPHP;
 
-class Glide
+use AvatarPHP\Glide\Generator;
+use AvatarPHP\Glide\Exception\InvalidException;
+
+class Glide extends Generator
 {
+
+    /**
+     * Check for session 
+     */
+    public static $session=null;
 
     /**
      * The application hash.
@@ -20,19 +29,9 @@ class Glide
     protected $hash;
 
     /**
-     * The application name.
-     */
-    public $name = "";
-
-    /**
      * The session key prefix.
      */
-    public static $key = "";
-
-    /**
-     * The hash salt.
-     */
-    protected $salt;
+    public static $key = "glide__";
 
     /**
      * Generate a CSRF token
@@ -40,14 +39,16 @@ class Glide
      * @param  null
      * @return string
      */
-    public static function use_glide()
+    public static function token()
     {
+        
+        $startSession = self::startSession();
 
-        $value = (new static())->generator();;
+        $token = Generator::token();
 
-        $session = (new static())->put(self::$key, $value);
+        $session = (new static())->put(self::$key, $token);
 
-        return $value;
+        return $token;
     }
 
     /**
@@ -59,12 +60,17 @@ class Glide
     public static function validate($hash)
     {
 
+        $startSession = self::startSession();
+
+        // if(is_null($startSession)){
+        //     throw new InvalidException("Start Your Session First");
+        // }
         $session = self::get(self::$key);
 
         if ($session == $hash) {
             return true;
         }
-        return false;
+        throw new InvalidException("Invalid Token/Token Not Found");
     }
 
     /**
@@ -123,28 +129,6 @@ class Glide
     }
 
     /**
-     * Generate "random" alpha-numeric string.
-     *
-     * @param  int  $length
-     * @return string
-     */
-    public function generator(int $length = 16)
-    {
-        $string = '';
-
-        while (($len = strlen($string)) < $length) {
-            $size = $length - $len;
-
-            $bytes = random_bytes($size);
-
-            $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
-        }
-
-        return $string;
-    }
-
-
-    /**
      * Decrypt the hash.
      *
      * @param  string  $encrypt
@@ -152,6 +136,21 @@ class Glide
      */
     public function decrypt($encrypt)
     {
+    }
+
+    /**
+     * Session
+     *
+     * @return void
+     */
+    public static function startSession()
+    {
+        if (\PHP_SESSION_NONE === session_status()) {
+            session_start();
+        }
+
+        self::$session = true;
+        return true;
     }
 
     /**
