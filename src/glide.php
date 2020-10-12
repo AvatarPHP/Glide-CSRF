@@ -4,24 +4,23 @@
  * This file is part of Glide CSRF Protection.
  *
  * (c) Sarfaraz <hey@m-sarfaraz.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  */
 
 namespace AvatarPHP;
 
-use AvatarPHP\Glide\Generator;
 use AvatarPHP\Glide\Exception\InvalidException;
+use AvatarPHP\Glide\Generator;
 
 class Glide extends Generator
 {
-
     /**
-     * Check for session 
+     * Check for session.
      */
-    public static $session=null;
+    public static $session = null;
 
     /**
      * The application hash.
@@ -31,17 +30,17 @@ class Glide extends Generator
     /**
      * The session key prefix.
      */
-    public static $key = "glide__";
+    public static $key = 'glide__';
 
     /**
-     * Generate a CSRF token
+     * Generate a CSRF token.
      *
      * @param  null
+     *
      * @return string
      */
     public static function token()
     {
-        
         $startSession = self::startSession();
 
         $token = Generator::token();
@@ -53,13 +52,13 @@ class Glide extends Generator
 
     /**
      * CSRF token validation.
-     * 
+     *
      * @param string $hash
+     *
      * @return mixed
      */
     public static function validate($hash)
     {
-
         $startSession = self::startSession();
 
         // if(is_null($startSession)){
@@ -70,18 +69,19 @@ class Glide extends Generator
         if ($session == $hash) {
             return true;
         }
-        throw new InvalidException("Invalid Token/Token Not Found");
+
+        throw new InvalidException('Invalid Token/Token Not Found');
     }
 
     /**
      * Set session key.
-     * 
+     *
      * @param string key|value
+     *
      * @return void
      */
     public function put($key, $value)
     {
-
         if (isset($_SESSION[$key]) && !empty($_SESSION[$key])) {
             unset($_SESSION[$key]);
         }
@@ -113,14 +113,13 @@ class Glide extends Generator
 
     /**
      * get session key.
-     * 
+     *
      * @param string $key
+     *
      * @return string|null
      */
-
     public static function get($key)
     {
-
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
         }
@@ -131,7 +130,8 @@ class Glide extends Generator
     /**
      * Decrypt the hash.
      *
-     * @param  string  $encrypt
+     * @param string $encrypt
+     *
      * @return string
      */
     public function decrypt($encrypt)
@@ -139,7 +139,7 @@ class Glide extends Generator
     }
 
     /**
-     * Session
+     * Session.
      *
      * @return void
      */
@@ -150,21 +150,23 @@ class Glide extends Generator
         }
 
         self::$session = true;
+
         return true;
     }
 
     /**
      *  Destroy the session.
-     * 
+     *
      * @param bool $destroy
-     * @return boolean
+     *
+     * @return bool
      */
     public static function destroy(bool $destroy = true)
     {
         if ($destroy == true) {
-
             session_unset();
             session_destroy();
+
             return true;
         }
 
