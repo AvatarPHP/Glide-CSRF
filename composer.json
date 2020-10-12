@@ -9,6 +9,8 @@
             "AvatarPHP\\": "src/"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload-dev": {
         "psr-4": {
             "AvatarPHP\\Test\\": "tests/"
