@@ -16,5 +16,4 @@
             "AvatarPHP\\Test\\": "tests/"
         }
     },
-    "bin": ["bin/"]
 }
