@@ -14,7 +14,8 @@ namespace AvatarPHP;
 
 use Glide\Exception\InvalidException;
 use  Glide\Token\Engine;
-class Glide 
+
+class Glide
 {
     /**
      * Check for session.
@@ -40,7 +41,7 @@ class Glide
      */
     public static function token()
     {
-        if(is_null(static::$session)){
+        if (is_null(static::$session)) {
             $startSession = self::startSession();
         }
 
@@ -60,7 +61,7 @@ class Glide
      */
     public static function validate($hash)
     {
-        if(is_null(static::$session)){
+        if (is_null(static::$session)) {
             $startSession = self::startSession();
         }
 
@@ -87,6 +88,7 @@ class Glide
         }
 
         $_SESSION[$key] = $value;
+
         return true;
     }
 
@@ -147,13 +149,10 @@ class Glide
     public static function startSession()
     {
         if (\PHP_SESSION_NONE === session_status()) {
-            
             session_start();
-           
+
             self::$session = true;
         }
-
-       
 
         return false;
     }
@@ -169,6 +168,7 @@ class Glide
     {
         if ($destroy == true) {
             session_unset();
+
             return true;
         }
 
