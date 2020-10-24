@@ -41,41 +41,49 @@ if(Glide::validate($key)){
 };
 
   ```
+  <br>
 Destroy CSRF token
 ##### destroy ()
 ```php
 $csrf->destroy();
 ```
+<br>
 
 Get session id
 ##### id ()
+
 ```php
 $csrf->id();
 ```
-Regenerate session id
+<br>
 
+Regenerate session id
 ##### Regenerate ()
 
 ```php
 $csrf->regenerate();
 ```
 
-Put session value
+<br>
 
+Put session value
 ##### put ()
 
 ```php
 $csrf->put($key,$value);
 ```
-Get session value
+<br>
 
+Get session value
 ##### get ()
 
 ```php
 $csrf->get($key);
 ```
-##### token ()
+<br>
+
 Get token value
+##### token ()
 ```php
 use Glide\Token\Engine;
 
