@@ -10,9 +10,9 @@
  *
  */
 
-namespace AvatarPHP\Glide;
+namespace Glide\Token;
 
-class Generator
+class Engine
 {
     /**
      * @var int
