@@ -164,7 +164,6 @@ class Glide
     {
         if ($destroy == true) {
             session_unset();
-            session_destroy();
             return true;
         }
 
