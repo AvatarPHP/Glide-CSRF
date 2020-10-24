@@ -5,15 +5,18 @@
     "homepage": "https://github.com/AvatarPHP/glide-csrf",
     "license":  "MIT",
     "autoload": {
-        "psr-4": {
-            "AvatarPHP\\": "src/"
-        }
+        "classmap": [
+            "src/"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload-dev": {
-        "psr-4": {
-            "AvatarPHP\\Test\\": "tests/"
-        }
+         "classmap": [
+            "tests/"
+        ]
+    },
+     "require-dev": {
+        "phpunit/phpunit": "^9.3"
     }
 }

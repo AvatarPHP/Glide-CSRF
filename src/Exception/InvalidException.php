@@ -10,7 +10,7 @@
  *
  */
 
-namespace AvatarPHP\Glide\Exception;
+namespace Glide\Exception;
 
 class InvalidException extends \RuntimeException
 {
