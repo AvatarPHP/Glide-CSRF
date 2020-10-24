@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use AvatarPHP\Glide;
-use PHPUnit\Framework\TestCase;
 use Glide\Exception\InvalidException;
+use PHPUnit\Framework\TestCase;
 
 final class GlideTest extends TestCase
 {
@@ -16,10 +16,8 @@ final class GlideTest extends TestCase
         $this->Glide = new Glide();
     }
 
-
     public function testVerifyToken()
     {
-
         $token = $this->Glide->token();
 
         $this->assertNotEmpty($token);
@@ -27,7 +25,6 @@ final class GlideTest extends TestCase
 
     public function testValidationException()
     {
-
         $this->expectException(InvalidException::class);
 
         $this->Glide->validate(1231);
@@ -35,7 +32,6 @@ final class GlideTest extends TestCase
 
     public function testValidateToken()
     {
-
         $token = $this->Glide->token();
 
         $validation = $this->Glide->validate($token);
@@ -47,15 +43,13 @@ final class GlideTest extends TestCase
     {
         $token = $this->Glide->token();
 
-        $this->assertEquals($token,$this->Glide->get($this->key));
+        $this->assertEquals($token, $this->Glide->get($this->key));
     }
-    
+
     public function testDestroyToken()
     {
         $token = $this->Glide->token();
 
         $this->assertTrue($this->Glide->destroy());
     }
-
-
 }
