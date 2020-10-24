@@ -12,10 +12,9 @@
 
 namespace AvatarPHP;
 
-use AvatarPHP\Glide\Exception\InvalidException;
-use AvatarPHP\Glide\Generator;
-
-class Glide extends Generator
+use Glide\Exception\InvalidException;
+use  Glide\Token\Engine;
+class Glide 
 {
     /**
      * Check for session.
@@ -30,7 +29,7 @@ class Glide extends Generator
     /**
      * The session key prefix.
      */
-    public static $key = 'glide__';
+    const SESSION_KEY = 'glide__';
 
     /**
      * Generate a CSRF token.
@@ -43,9 +42,9 @@ class Glide extends Generator
     {
         $startSession = self::startSession();
 
-        $token = Generator::token();
+        $token = Engine::token();
 
-        $session = (new static())->put(self::$key, $token);
+        $session = (new static())->put(self::SESSION_KEY, $token);
 
         return $token;
     }
@@ -61,10 +60,7 @@ class Glide extends Generator
     {
         $startSession = self::startSession();
 
-        // if(is_null($startSession)){
-        //     throw new InvalidException("Start Your Session First");
-        // }
-        $session = self::get(self::$key);
+        $session = self::get(self::SESSION_KEY);
 
         if ($session == $hash) {
             return true;
@@ -146,12 +142,15 @@ class Glide extends Generator
     public static function startSession()
     {
         if (\PHP_SESSION_NONE === session_status()) {
+            
             session_start();
+           
+            self::$session = true;
         }
 
-        self::$session = true;
+       
 
-        return true;
+        return false;
     }
 
     /**
@@ -166,7 +165,6 @@ class Glide extends Generator
         if ($destroy == true) {
             session_unset();
             session_destroy();
-
             return true;
         }
 
