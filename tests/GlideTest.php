@@ -6,7 +6,7 @@ use AvatarPHP\Glide;
 use PHPUnit\Framework\TestCase;
 use Glide\Exception\InvalidException;
 
-final class TokenTest extends TestCase
+final class GlideTest extends TestCase
 {
     protected $Glide;
     protected $key = 'glide__';
@@ -49,13 +49,7 @@ final class TokenTest extends TestCase
 
         $this->assertEquals($token,$this->Glide->get($this->key));
     }
-
-    public function testPutToken()
-    {
-        $token = $this->Glide->token();
-
-        $this->assertTrue($this->Glide->put($this->key,$token));
-    }
+    
     public function testDestroyToken()
     {
         $token = $this->Glide->token();
