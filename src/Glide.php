@@ -40,7 +40,9 @@ class Glide
      */
     public static function token()
     {
-        $startSession = self::startSession();
+        if(is_null(static::$session)){
+            $startSession = self::startSession();
+        }
 
         $token = Engine::token();
 
@@ -58,7 +60,9 @@ class Glide
      */
     public static function validate($hash)
     {
-        $startSession = self::startSession();
+        if(is_null(static::$session)){
+            $startSession = self::startSession();
+        }
 
         $session = self::get(self::SESSION_KEY);
 
