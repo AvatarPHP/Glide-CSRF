@@ -38,6 +38,13 @@ final class GlideTest extends TestCase
 
         $this->assertEquals(true, $validation);
     }
+    
+    public function testPutToken()
+    {
+        $token = $this->Glide->token();
+
+        $this->assertTrue($this->Glide->put($this->key,$token));
+    }
 
     public function testGetToken()
     {
