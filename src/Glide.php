@@ -83,6 +83,7 @@ class Glide
         }
 
         $_SESSION[$key] = $value;
+        return true;
     }
 
     /**
