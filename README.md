@@ -22,8 +22,8 @@
     <img src="https://img.shields.io/github/license/marktext/marktext.svg" alt="LICENSE">
   </a>
   <!-- Downloads total --> 
-  <a href="https://github.com/AvatarPHP/Glide-CSRF/releases">
-    <img src="https://img.shields.io/github/downloads/AvatarPHP/Glide-CSRF/total" alt="total download">
+  <a href="https://github.com/AvatarPHP/Glide-CSRF/issues">
+    <img src="https://img.shields.io/github/issues/AvatarPHP/Glide-CSRF" alt="issues">
   </a>
 </div>
 
