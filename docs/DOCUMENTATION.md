@@ -42,6 +42,7 @@ if(Glide::validate($key)){
 
   ```
   <br>
+  
 Destroy CSRF token
 ##### destroy ()
 ```php
