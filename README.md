@@ -51,7 +51,7 @@
 <br />
 
 ## Notice
-Beta Version Release
+Stable Version Release
 
 ## Requirements
 PHP 5.6.0 and later.
