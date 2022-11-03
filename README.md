@@ -59,7 +59,7 @@ PHP 5.6.0 and later.
 
 ## Composer
 
-You can install the bindings via Composer. Run the following command:
+You can install the bindings via Composer,Run the following command:
 
 ```composer require avatarphp/glide-csrf```
 
